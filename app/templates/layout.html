@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>House Balance</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        {% endblock %}
+
+    </head>
+    <body>
+    <div id="my-body">
+        <section id="navbar">
+            <ul class=" nav-list">
+                <li><a href="{{ url_for('records.view_records') }}">Home</a></li>
+                <li><a href="{{ url_for('graphics.graphics') }}">Graphics</a></li>
+            </ul>
+        </section>
+        <section id="main-content">
+            {% block content%}
+            {% endblock %}
+        </section>
+    </div>
+
+    </body>
+</html>
