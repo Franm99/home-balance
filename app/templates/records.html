@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
+<section id="actions-section">
     <div>
         <a href="{{ url_for('records.add_record') }}">Nuevo registro</a>
     </div>
+</section>
+<section id="balance-history-section">
     <div>
         <div>
             {% for record in records_list %}
@@ -12,15 +15,19 @@
                     {% set record_color='green' %}
                 {% endif %}
                     <div class="record-container">
-                        <div class="record-cell" style="display: flex; padding: 2px; background-color: {{ record_color }};">
+                        <div class="record-cell" style="background-color: {{ record_color }};">
+                            <div>
                                 <p>{{ record.date }}</p>
                                 <p>{{ record.amount }}</p>
                                 <p>{{ record.tag }}</p>
+                            </div>
+                            <div>
                                 <p>{{ record.reporter }}</p>
                                 <p>{{ record.description }}</p>
+                            </div>
                         </div>
                         <div class="record-actions">
-                            <ul class="actions=list">
+                            <ul class="actions-list">
                                 <li><a href="{{ url_for('records.remove_record', record_id=record.id) }}">Eliminar</a></li>
                             </ul>
                         </div>
@@ -28,6 +35,7 @@
 
             {% endfor %}
         </div>
-
     </div>
+</section>
+
 {% endblock %}

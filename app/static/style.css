@@ -4,13 +4,32 @@
 #my-body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    border: solid 2px cyan;
+    max-width: 60%;
+    margin: 5% auto;
+}
+
+#actions-section {
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+}
+
+#balance-history-section {
+    border: solid 1px blue;
 }
 
 /* NAVBAR */
 
+#navbar-section {
+    border: solid 1px blue;
+}
+
 .nav-list {
     display: flex;
+    padding: 0;
 }
 
 .nav-list li {
@@ -18,4 +37,22 @@
     display: block;
     padding: 20px;
 
+}
+
+/* */
+.record-cell div {
+    display: flex;
+}
+
+.record-container {
+    display: flex;
+}
+
+.actions-list {
+    padding: 0;
+}
+
+.actions-list li {
+    list-style-type: none;
+    padding: 10px;
 }
