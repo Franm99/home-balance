@@ -1,6 +1,7 @@
 from app import create
+import settings
 
 if __name__ == '__main__':
-    app = create()
+    app = create(settings.DEV_MODE)
     
     app.run(debug=True)
