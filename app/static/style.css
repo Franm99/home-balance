@@ -1,4 +1,11 @@
+:root {
+    --bg-income: #a7c9a9;
+    --bg-expense: #c9ada7;
+}
 
+* {
+    font-family: "Fira Sans", sans-serif;
+}
 /* BODY */
 
 #my-body {
@@ -9,6 +16,10 @@
     border: solid 2px cyan;
     max-width: 60%;
     margin: 5% auto;
+}
+
+#main-content {
+    width: 100%
 }
 
 #actions-section {
@@ -40,12 +51,28 @@
 }
 
 /* */
+.record-cell {
+    width: 90%;
+}
+
+.record-cell-expense {
+    background-color: var(--bg-expense);
+}
+
+.record-cell-income {
+    background-color: var(--bg-income);
+}
+
 .record-cell div {
     display: flex;
 }
 
 .record-container {
     display: flex;
+}
+
+.record-row p {
+    padding: 0 5px;
 }
 
 .actions-list {

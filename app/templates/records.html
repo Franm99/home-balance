@@ -6,36 +6,27 @@
     </div>
 </section>
 <section id="balance-history-section">
-    <div>
-        <div>
-            {% for record in records_list %}
-                {% if record.is_expense == True %}
-                    {% set record_color='red' %}
-                {% elif record.is_expense == False %}
-                    {% set record_color='green' %}
-                {% endif %}
-                    <div class="record-container">
-                        <div class="record-cell" style="background-color: {{ record_color }};">
-                            <div>
-                                <p>{{ record.date }}</p>
-                                <p>{{ record.amount }}</p>
-                                <p>{{ record.tag }}</p>
-                            </div>
-                            <div>
-                                <p>{{ record.reporter }}</p>
-                                <p>{{ record.description }}</p>
-                            </div>
-                        </div>
-                        <div class="record-actions">
-                            <ul class="actions-list">
-                                <li><a href="{{ url_for('records.remove_record', record_id=record.id) }}">Eliminar</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-            {% endfor %}
+    {% for record in records_list %}
+        <div class="record-container">
+            <div class="record-cell {{ 'record-cell-expense' if record.is_expense else 'record-cell-income' }}">
+                <div class="record-row">
+                    <p>{{ record.date }}</p>
+                    <p>{{ record.amount }}</p>
+                    <p>{{ record.tag }}</p>
+                </div>
+                <div class="record-row">
+                    <p>{{ record.reporter }}</p>
+                    <p>{{ record.description }}</p>
+                </div>
+            </div>
+            <div class="record-actions">
+                <ul class="actions-list">
+                    <li><a href="{{ url_for('records.remove_record', record_id=record.id) }}">Eliminar</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+
+    {% endfor %}
 </section>
 
 {% endblock %}
