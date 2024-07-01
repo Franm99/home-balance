@@ -8,7 +8,7 @@ bp = Blueprint('records', 'records', '/')
 
 @bp.route('/')
 def view_records():
-    records_table = db.session.execute(db.select(RecordsModel))
+    records_table = db.session.execute(db.select(RecordsModel).order_by(RecordsModel.date.desc()))
     return render_template(
         'records.html',
         records_list=[r for r, in records_table]
