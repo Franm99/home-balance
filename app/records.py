@@ -2,6 +2,7 @@ from datetime import datetime
 
 from flask import Blueprint, render_template, redirect, url_for, request
 from .db import db, RecordsModel
+from .misc.utils import date_convert
 
 bp = Blueprint('records', 'records', '/')
 
@@ -11,7 +12,8 @@ def view_records():
     records_table = db.session.execute(db.select(RecordsModel).order_by(RecordsModel.date.desc()))
     return render_template(
         'records.html',
-        records_list=[r for r, in records_table]
+        records_list=[r for r, in records_table],
+        date_convert=date_convert
     )
 
 
@@ -41,12 +43,3 @@ def remove_record(record_id):
     db.session.execute(db.delete(RecordsModel).where(RecordsModel.id == record_id))
     db.session.commit()
     return redirect(url_for('records.view_records'))
-
-#
-# @bp.route("/update_record/<int:record_id>", methods=["GET"])
-# def update_record(record_id):
-    record = db.session.execute(db.select(RecordsModel).where(RecordsModel.id == record_id))
-
-
-
-

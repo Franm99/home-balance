@@ -10,7 +10,7 @@
         <div class="record-container">
             <div class="record-cell {{ 'record-cell-expense' if record.is_expense else 'record-cell-income' }}">
                 <div class="record-row">
-                    <p>{{ record.date }}</p>
+                    <p>{{ date_convert(record.date) }}</p>
                     <p>{{ record.amount }}</p>
                     <p>{{ record.tag }}</p>
                 </div>

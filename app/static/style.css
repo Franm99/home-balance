@@ -1,4 +1,6 @@
 :root {
+    --bg-main: #e1f1fa;
+
     --bg-income: #a7c9a9;
     --bg-expense: #c9ada7;
 }
@@ -8,18 +10,23 @@
 }
 /* BODY */
 
+html {
+    background-color: var(--bg-main);
+}
+
 #my-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: solid 2px cyan;
-    max-width: 60%;
-    margin: 5% auto;
+    max-width: 70vw;
+    margin: 0 auto;
+    margin-top: 5vh;
 }
 
 #main-content {
-    width: 100%
+    width: 100%;
 }
 
 #actions-section {
@@ -82,4 +89,46 @@
 .actions-list li {
     list-style-type: none;
     padding: 10px;
+}
+
+/*
+    ADD NEW RECORD VIEW
+*/
+
+#form-new-record {
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 5vh;
+}
+
+fieldset {
+    border: none;
+    padding: 2rem 0;
+    border-bottom: 3px solid #3b3b4f;
+}
+
+fieldset:last-of-type {
+    border-bottom: none;
+}
+
+label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+
+input {
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+    text-align: center;
+}
+
+button[type="submit"] {
+    width: 50%;
+    margin 1em auto;
+    height: 2em;
+    font-size: 1.1rem;
+    min-width: 300px;
 }
