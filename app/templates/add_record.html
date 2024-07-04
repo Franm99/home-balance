@@ -23,7 +23,12 @@
 
                 </fieldset>
                 <fieldset>
-                    <label for="reporter">Realizado por<input type="text" name="reporter" id="reporter" required></label>
+                    <label for="reporter">Realizado por</label>
+                    <select id="reporter" name="reporter" required>
+                        {% for reporter in allowed_reporters%}
+                        <option value="{{ reporter }}">{{ reporter }}</option>
+                        {% endfor %}
+                    </select>
                     <label for="tag">Asunto<input type="text" name="tag" id="tag" required></label>
                     <label for="description">Descripción<input type="text" name="description" id="description"></label>
                 </fieldset>

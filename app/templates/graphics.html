@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Hello World! - Graphics!!</h1>
+    <div>
+        {% for month, fig in income_expense_graphics.items() %}
+        <h3>{{month}}</h3>
+        <img src="data::image/png;base64,{{fig}}">
+        {% endfor %}
+    </div>
+<!--    <img src="data::image/png;base64,{{fig1}}">-->
+<!--    <img src="data::image/png;base64,{{fig2}}">-->
 {% endblock %}
