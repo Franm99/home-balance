@@ -15,7 +15,8 @@ bp = Blueprint('graphics', __name__, url_prefix='/graphics')
 @bp.route('/')
 def graphics():
     graphics_dict = compute_graphics()
-    return render_template('graphics.html', graphics=graphics_dict)
+    savings = compute_savings()
+    return render_template('graphics.html', graphics=graphics_dict, savings=savings)
 
 
 def group_records_by_month(records_list: list):
@@ -82,6 +83,7 @@ def compute_graphics():
         graphics[month] = income_expense_graphics[month], expense_by_tag_graphics[month]
     return graphics
 
+
 def get_totals_by_month(month: int):
     records_expense_fran = get_total_by_month(month, True, "FRAN")
     records_expense_paula = get_total_by_month(month, True, "PAULA")
@@ -125,11 +127,14 @@ def get_income_expense_graphics():
     return figs
 
 
-def get_all_tags_in_month(month: int):
-    return [r for r, in db.session.execute(db.select(RecordsModel).where(RecordsModel))]
-
-
-def get_total_by_tag(month: int, tag: str):
-    return [r for r, in db.session.execute(db.select(RecordsModel).filter(
-
-    ))]
+def compute_savings():
+    savings_by_month = dict()
+    records_list = [r for r, in db.session.execute(db.select(RecordsModel).order_by(RecordsModel.date.desc()))]
+    records_by_month = group_records_by_month(records_list)
+    for month in records_by_month:
+        total_expense = sum(r.amount for r in records_by_month[month] if r.is_expense)
+        total_income = sum(r.amount for r in records_by_month[month] if not r.is_expense)
+        savings = total_income - total_expense
+        savings_pctg = savings / (total_expense + total_income)
+        savings_by_month[calendar.month_name[month]] = savings, str(round(savings_pctg * 100, 2))
+    return savings_by_month

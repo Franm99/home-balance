@@ -4,6 +4,9 @@
         {% for month in graphics %}
         <div class="graphics-month-section">
             <h3 class="graphics-month-title">{{month}}</h3>
+            <div class="month-details">
+                <p>Ahorro total: <span class="month-saves">{{ savings[month][0] }}</span> <span class="month-saves-pctg">({{ savings[month][1] }} %)</span></p>
+            </div>
             <div class="graphics">
                 <img class="graph graph-totals"src="data::image/png;base64,{{ graphics[month][0] }}">
                 <img class="graph graph-tags"src="data::image/png;base64,{{ graphics[month][1] }}">

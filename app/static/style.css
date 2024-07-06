@@ -8,6 +8,10 @@
 * {
     font-family: "Fira Sans", sans-serif;
 }
+
+a {
+    text-decoration: none;
+}
 /* BODY */
 
 html {
@@ -19,7 +23,6 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 2px cyan;
     max-width: 70vw;
     margin: 0 auto;
     margin-top: 5vh;
@@ -30,19 +33,17 @@ html {
 }
 
 #actions-section {
-    border: solid 1px black;
     display: flex;
     justify-content: center;
+    padding: 20px 0;
 }
 
 #balance-history-section {
-    border: solid 1px blue;
 }
 
 /* NAVBAR */
 
 #navbar-section {
-    border: solid 1px blue;
 }
 
 .nav-list {
@@ -131,4 +132,13 @@ button[type="submit"] {
     height: 2em;
     font-size: 1.1rem;
     min-width: 300px;
+}
+
+
+/*
+-----    GRAPHICS TAB     -----
+*/
+
+.graph {
+    width: 49%
 }
