@@ -72,6 +72,7 @@ def get_expenses_by_tag_graph():
         plt.savefig(buf, format="png")
         figs[month] = base64.b64encode(buf.getbuffer()).decode("ascii")
         buf.close()
+        plt.close()
     return figs
 
 
@@ -116,7 +117,7 @@ def get_income_expense_graphics():
         for bar in ax.patches:
             ax.text(bar.get_x() + bar.get_width() / 2.0,
                     bar.get_height() / 2.0 + bar.get_y(),
-                    bar.get_height(), ha="center",
+                    round(bar.get_height(), 2), ha="center",
                     color="w", weight="bold", size=10)
         ax.legend()
 
@@ -124,6 +125,7 @@ def get_income_expense_graphics():
         plt.savefig(buf, format="png")
         figs[month] = base64.b64encode(buf.getbuffer()).decode("ascii")
         buf.close()
+        plt.close()
     return figs
 
 
@@ -136,5 +138,5 @@ def compute_savings():
         total_income = sum(r.amount for r in records_by_month[month] if not r.is_expense)
         savings = total_income - total_expense
         savings_pctg = savings / (total_expense + total_income)
-        savings_by_month[calendar.month_name[month]] = savings, str(round(savings_pctg * 100, 2))
+        savings_by_month[calendar.month_name[month]] = str(round(savings, 2)), str(round(savings_pctg * 100, 2))
     return savings_by_month
