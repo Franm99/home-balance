@@ -3,6 +3,13 @@
 
     --bg-income: #a7c9a9;
     --bg-expense: #c9ada7;
+
+    --color-primary: #3B3561;
+    --color-secondary: #D1D1D1;
+    --color-terciary: #EAD94C;
+    --color-positive: #51A3A3;
+    --color-negative: #DD7373;
+
 }
 
 * {
@@ -11,6 +18,10 @@
 
 a {
     text-decoration: none;
+}
+
+a, a:visited {
+    color: inherit;
 }
 /* BODY */
 
@@ -38,6 +49,43 @@ html {
     padding: 20px 0;
 }
 
+.record-actions {
+    display: flex;
+    align-items: center;
+}
+
+#new-record {
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: var(--color-secondary);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+#new-record:hover,
+#new-record:active {
+    background-color: var(--color-secondary);
+    background-position: 0 0;
+    color: var(--color-primary);
+}
+
+#new-record:active {
+    opacity: .5;
+}
+
 #balance-history-section {
 }
 
@@ -54,9 +102,13 @@ html {
 .nav-list li {
     list-style-type: none;
     display: block;
-    padding: 20px;
-
+    padding: 0 20px;
 }
+
+.nav-list li a {
+    font-size: 1.5rem;
+}
+
 
 /* */
 .record-cell {
@@ -64,11 +116,11 @@ html {
 }
 
 .record-cell-expense {
-    background-color: var(--bg-expense);
+    background-color: var(--color-negative);
 }
 
 .record-cell-income {
-    background-color: var(--bg-income);
+    background-color: var(--color-positive);
 }
 
 .record-cell div {
@@ -77,6 +129,7 @@ html {
 
 .record-container {
     display: flex;
+    justify-content: center;
 }
 
 .record-row p {
