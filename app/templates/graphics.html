@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Hello World! - Graphics!!</h1>
-    <div>
-        {% for month, fig in income_expense_graphics.items() %}
-        <h3>{{month}}</h3>
-        <img src="data::image/png;base64,{{fig}}">
+    <section id="graphics-section">
+        {% for month in graphics %}
+        <div class="graphics-month-section">
+            <h3 class="graphics-month-title">{{month}}</h3>
+            <div class="graphics">
+                <img class="graph graph-totals"src="data::image/png;base64,{{ graphics[month][0] }}">
+                <img class="graph graph-tags"src="data::image/png;base64,{{ graphics[month][1] }}">
+            </div>
+        </div>
         {% endfor %}
-    </div>
-<!--    <img src="data::image/png;base64,{{fig1}}">-->
-<!--    <img src="data::image/png;base64,{{fig2}}">-->
+    </section>
 {% endblock %}
