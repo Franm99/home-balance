@@ -1,5 +1,6 @@
 :root {
     --bg-main: #e1f1fa;
+    --bg-main2: #d7ecf7;
 
     --bg-income: #a7c9a9;
     --bg-expense: #c9ada7;
@@ -109,14 +110,31 @@ html {
     font-size: 1.5rem;
 }
 
+.nav-link {
+    transition: font-weight 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    font-weight: 700;
+}
+
 
 /* */
 .record-cell {
     width: 90%;
+    height: auto;
 }
 
 .record-cell-expense {
     background-color: var(--color-negative);
+}
+
+.text-expense {
+    color: var(--color-negative);
+}
+
+.text-income {
+    color: var(--color-positive);
 }
 
 .record-cell-income {
@@ -130,10 +148,26 @@ html {
 .record-container {
     display: flex;
     justify-content: center;
+    border-bottom: solid 2px #c3cee0;
+    margin-bottom: 0.2rem;
+    background-color: var(--bg-main2);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.record-row p {
-    padding: 0 5px;
+.record-cell {
+    width: 90%;
+}
+
+.record-actions {
+    display: flex;
+    justify-content: center;
+    width: 8%;
+    font-size: 0.5rem;
+}
+
+.record-actions ul {
+
 }
 
 .actions-list {

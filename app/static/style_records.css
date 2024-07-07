@@ -1,0 +1,57 @@
+
+.record-color {
+    width: 2%;
+    margin-right: 1rem;
+}
+
+.record-row-1 {
+    display: flex;
+    padding: 1rem 0;
+}
+
+.record-row-2 {
+    width: auto;
+
+}
+
+.record-info {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    margin-top: auto;
+}
+
+.record-info-date {
+    font-size: 2rem;
+    width: 35%;
+}
+
+.record-info-amount {
+    font-size: 2rem;
+    width: 40%;
+}
+
+.record-info-tag {
+    font-size: 1.7rem;
+    font-weight: 500;
+    width: 25%;
+
+}
+
+.tag-box {
+    background-color: #EAD94C;
+    color: #3B3561;
+    border-radius: 10%;
+    padding: 0.3rem;
+    text-transform: lowercase;
+    box-shadow: 0.1rem 0.1rem var(--color-primary);
+
+}
+
+.record-info-reporter {
+    margin-bottom: 1rem;
+}
+
+.record-info-description {
+    width: 75%;
+    margin-bottom: 1rem;
+}

@@ -5,16 +5,17 @@
 </section>
 <section id="balance-history-section">
     {% for record in records_list %}
-        <div class="record-container {{ 'record-cell-expense' if record.is_expense else 'record-cell-income' }}">
+        <div class="record-container">
+            <span class="record-color {{ 'record-cell-expense' if record.is_expense else 'record-cell-income' }}"></span>
             <div class="record-cell">
-                <div class="record-row">
-                    <p>{{ date_convert(record.date) }}</p>
-                    <p>{{ record.amount }}</p>
-                    <p>{{ record.tag }}</p>
+                <div class="record-row-1">
+                    <p class="record-info record-info-date">{{ date_convert(record.date) }}</p>
+                    <p class="record-info record-info-amount {{ 'text-expense' if record.is_expense else 'text-income' }}">{{ record.amount }} €</p>
+                    <p class="record-info record-info-tag"><span class="tag-box">{{ record.tag }}</span></p>
                 </div>
                 <div class="record-row">
-                    <p>{{ record.reporter }}</p>
-                    <p>{{ record.description }}</p>
+                    <p class="record-info record-info-description">{{ record.description }}</p>
+                    <p class="record-info record-info-reporter">{{ record.reporter }}</p>
                 </div>
             </div>
             <div class="record-actions">
