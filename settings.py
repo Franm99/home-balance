@@ -13,4 +13,4 @@ ALLOWED_REPORTERS = [
     "PAULA"
 ]
 
-DEV_MODE = True
+DEV_MODE = False
