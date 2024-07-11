@@ -64,10 +64,11 @@ def get_expenses_by_tag_graph():
 
     for month, expenses in expenses_by_tag_and_month.items():
         fig, ax = plt.subplots()
-        ax.barh(expenses.keys(), expenses.values(), height=0.75, color="red")
+        ax.barh(expenses.keys(), expenses.values(), height=0.75, color="#DD7373")
         fig.set_figwidth(8)
         fig.set_figheight(5)
         ax.set_xlim(0, 1000)
+        ax.set_facecolor("white")
         _, x_max = plt.xlim()
         plt.xlim(0, x_max + 10)
         for idx, amount in enumerate(expenses.values()):
@@ -117,9 +118,10 @@ def get_income_expense_graphics():
         vals_fran = totals["Gasto"]["FRAN"], totals["Ingreso"]["FRAN"]
         vals_paula = totals["Gasto"]["PAULA"], totals["Ingreso"]["PAULA"]
         pos = [0.6, 1]
-        ax.bar(pos, vals_fran, label="Fran", width=0.3)
-        ax.bar(pos, vals_paula, bottom=vals_fran, label="Paula", width=0.3)
+        ax.bar(pos, vals_fran, label="Fran", width=0.3, color="#3423A6")
+        ax.bar(pos, vals_paula, bottom=vals_fran, label="Paula", width=0.3, color="#4DAA57")
         ax.set_xticks(pos, list(totals.keys()))
+        ax.set_facecolor("white")
         fig.set_figwidth(4)
         fig.set_figheight(5)
         for bar in ax.patches:
