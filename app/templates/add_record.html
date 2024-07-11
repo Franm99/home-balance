@@ -16,7 +16,7 @@
             <form id="form-new-record" method="POST" action="{{ url_for('records.add_record') }}">
                 <fieldset>
                     <label for="from_date">Fecha<input type="date" name="from_date" id="from_date" required></label>
-                    <label for="is_expense">Ingreso<input type="checkbox" name="is_expense" id="is_expense" value="False">
+                    <label for="is_expense"><input class="toggle" type="checkbox" name="is_expense" id="is_expense" value="False">
                         <span class="slider"></span>
                     </label>
                     <label for="amount">Cantidad<input type="number" step="0.01" min="0" name="amount" id="amount" required></label>

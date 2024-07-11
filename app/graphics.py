@@ -112,8 +112,11 @@ def get_income_expense_graphics():
         fig, ax = plt.subplots()
         vals_fran = totals["E"]["FRAN"], totals["I"]["FRAN"]
         vals_paula = totals["E"]["PAULA"], totals["I"]["PAULA"]
-        ax.bar(list(totals.keys()), vals_fran, label="Fran")
-        ax.bar(list(totals.keys()), vals_paula, bottom=vals_fran, label="Paula")
+        pos = [0.6, 1.1]
+        ax.bar(pos, vals_fran, label="Fran", width=0.5)
+        ax.bar(pos, vals_paula, bottom=vals_fran, label="Paula", width=0.5)
+        ax.set_xticks(pos, list(totals.keys()))
+        fig.set_figwidth(3)
         for bar in ax.patches:
             ax.text(bar.get_x() + bar.get_width() / 2.0,
                     bar.get_height() / 2.0 + bar.get_y(),
