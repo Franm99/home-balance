@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 import sqlalchemy
 matplotlib.use('Agg')
+plt.rcParams["font.family"] = "Gadugi"
 
 bp = Blueprint('graphics', __name__, url_prefix='/graphics')
 
@@ -50,9 +51,9 @@ def get_expenses_by_tag_and_month():
         expenses_by_tag_and_month[month_int] = dict()
         for expense in expenses:
             if expense.tag not in expenses_by_tag_and_month[month_int]:
-                expenses_by_tag_and_month[month_int][expense.tag] = expense.amount
+                expenses_by_tag_and_month[month_int][expense.tag.capitalize()] = expense.amount
             else:
-                expenses_by_tag_and_month[month_int][expense.tag] += expense.amount
+                expenses_by_tag_and_month[month_int][expense.tag.capitalize()] += expense.amount
 
     return expenses_by_tag_and_month
 
@@ -64,12 +65,15 @@ def get_expenses_by_tag_graph():
     for month, expenses in expenses_by_tag_and_month.items():
         fig, ax = plt.subplots()
         ax.barh(expenses.keys(), expenses.values(), height=0.75, color="red")
+        fig.set_figwidth(8)
+        fig.set_figheight(5)
+        ax.set_xlim(0, 1000)
         _, x_max = plt.xlim()
         plt.xlim(0, x_max + 10)
         for idx, amount in enumerate(expenses.values()):
-            ax.text(amount + 100, idx, str(amount), ha='left', va='center')
+            ax.text(amount + 20, idx, str(amount), ha='left', va='center')
         buf = BytesIO()
-        plt.savefig(buf, format="png")
+        plt.savefig(buf, format="png", transparent=True)
         figs[month] = base64.b64encode(buf.getbuffer()).decode("ascii")
         buf.close()
         plt.close()
@@ -99,7 +103,7 @@ def get_totals_by_month(month: int):
         "FRAN": sum(rec.amount for rec in records_income_fran),
         "PAULA": sum(rec.amount for rec in records_income_paula)
     }
-    return {"E": total_expense, "I": total_income}
+    return {"Gasto": total_expense, "Ingreso": total_income}
 
 
 def get_income_expense_graphics():
@@ -110,13 +114,14 @@ def get_income_expense_graphics():
     figs = dict()
     for month, totals in totals_by_month.items():
         fig, ax = plt.subplots()
-        vals_fran = totals["E"]["FRAN"], totals["I"]["FRAN"]
-        vals_paula = totals["E"]["PAULA"], totals["I"]["PAULA"]
-        pos = [0.6, 1.1]
-        ax.bar(pos, vals_fran, label="Fran", width=0.5)
-        ax.bar(pos, vals_paula, bottom=vals_fran, label="Paula", width=0.5)
+        vals_fran = totals["Gasto"]["FRAN"], totals["Ingreso"]["FRAN"]
+        vals_paula = totals["Gasto"]["PAULA"], totals["Ingreso"]["PAULA"]
+        pos = [0.6, 1]
+        ax.bar(pos, vals_fran, label="Fran", width=0.3)
+        ax.bar(pos, vals_paula, bottom=vals_fran, label="Paula", width=0.3)
         ax.set_xticks(pos, list(totals.keys()))
-        fig.set_figwidth(3)
+        fig.set_figwidth(4)
+        fig.set_figheight(5)
         for bar in ax.patches:
             ax.text(bar.get_x() + bar.get_width() / 2.0,
                     bar.get_height() / 2.0 + bar.get_y(),
@@ -125,7 +130,7 @@ def get_income_expense_graphics():
         ax.legend()
 
         buf = BytesIO()
-        plt.savefig(buf, format="png")
+        plt.savefig(buf, format="png", transparent=True)
         figs[month] = base64.b64encode(buf.getbuffer()).decode("ascii")
         buf.close()
         plt.close()
