@@ -6,12 +6,11 @@
 
 .record-row-1 {
     display: flex;
-    padding: 1rem 0;
+    padding-top: 1rem;
 }
 
 .record-row-2 {
     width: auto;
-
 }
 
 .record-info {
@@ -22,25 +21,30 @@
 
 .record-info-date {
     font-size: 2rem;
+    color: var(--color-primary);
     width: 35%;
+    display: flex;
+    flex-direction: column;
 }
 
 .record-info-day {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 1000;
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .record-info-amount {
     font-size: 2rem;
+    font-weight: 700;
     width: 40%;
+    margin-top: 0;
 }
 
 .record-info-tag {
     font-size: 1.7rem;
     font-weight: 500;
     width: 25%;
-
+    margin-top: 0;
 }
 
 .tag-box {
@@ -48,9 +52,7 @@
     color: #3B3561;
     border-radius: 15px;
     padding: 0.3rem;
-    text-transform: lowercase;
     box-shadow: 0.1rem 0.1rem var(--color-primary);
-
 }
 
 .record-info-reporter {
@@ -60,4 +62,15 @@
 .record-info-description {
     width: 75%;
     margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    position: relative;
+}
+
+.record-info-description::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 75%;
+    border-top: 1px solid var(--color-secondary);
 }

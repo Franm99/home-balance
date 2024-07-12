@@ -15,18 +15,18 @@
                         <span class="record-info-day">{{ date_elements[1] }}</span>
                     </p>
                     <p class="record-info record-info-amount {{ 'text-expense' if record.is_expense else 'text-income' }}">{{ record.amount }} €</p>
-                    <p class="record-info record-info-tag"><span class="tag-box">{{ record.tag }}</span></p>
+                    <p class="record-info record-info-tag"><span class="tag-box">{{ record.tag[0] }}{{ record.tag[1:]|lower }}</span></p>
                 </div>
                 <div class="record-row">
                     <p class="record-info record-info-description">{{ record.description }}</p>
-                    <p class="record-info record-info-reporter">{{ record.reporter }}</p>
+                    <p class="record-info record-info-reporter">{{ record.reporter[0] }}{{ record.reporter[1:]|lower }}</p>
                 </div>
             </div>
             <div class="record-actions">
                 <ul class="actions-list">
                     <li>
                         <a href="{{ url_for('records.remove_record', record_id=record.id) }}">
-                        <span class="material-symbols-outlined">delete</span>
+                            <span class="material-symbols-outlined">delete</span>
                         </a>
                     </li>
                 </ul>
