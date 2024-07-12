@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <section id="actions-section">
-    <a href="{{ url_for('records.add_record') }}"><button id="new-record">Nuevo registro</button></a>
+    <a href="{{ url_for('records.add_record') }}"><button class="new-record">Nuevo registro</button></a>
 </section>
 <section id="balance-history-section">
     {% for record in records_list %}

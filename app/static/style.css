@@ -59,7 +59,7 @@ html {
     align-items: center;
 }
 
-#new-record {
+.new-record {
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
     border-radius: 6px;
@@ -80,14 +80,14 @@ html {
     vertical-align: middle;
 }
 
-#new-record:hover,
-#new-record:active {
+.new-record:hover,
+.new-record:active {
     background-color: var(--color-4);
     background-position: 0 0;
     color: var(--color-primary);
 }
 
-#new-record:active {
+.new-record:active {
     opacity: .5;
 }
 
@@ -186,17 +186,47 @@ html {
     ADD NEW RECORD VIEW
 */
 
+#container-form {
+    height: 100vh;
+    position: absolute:
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
 #form-new-record {
-    width: 30%;
+    width: 50vw;
     text-align: center;
-    margin: 0 auto;
-    margin-bottom: 5vh;
+    margin: auto auto;
+    padding: 25px;
+    padding-bottom: 40px;
+    box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
 }
 
 fieldset {
     border: none;
-    padding: 2rem 0;
-    border-bottom: 3px solid #3b3b4f;
+    border-top: 3px solid var(--color-4);
+    width: 50%;
+    margin: 0 auto;
+}
+
+.set-legend {
+    color: var(--color-secondary);
+}
+
+#fieldset-expense {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#fieldset-reporter-info {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: end;
 }
 
 fieldset:last-of-type {
@@ -216,12 +246,9 @@ input {
     text-align: center;
 }
 
-button[type="submit"] {
-    width: 50%;
-    margin 1em auto;
+select {
     height: 2em;
-    font-size: 1.1rem;
-    min-width: 300px;
+    margin: 0.5rem 0;
 }
 
 

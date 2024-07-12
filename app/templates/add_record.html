@@ -11,30 +11,40 @@
 
     </head>
     <body>
-    <div id="my-body">
+    <div id="body-form">
         <section id="main-content">
-            <form id="form-new-record" method="POST" action="{{ url_for('records.add_record') }}">
-                <fieldset>
-                    <label for="from_date">Fecha<input type="date" name="from_date" id="from_date" required></label>
-                    <label for="is_expense"><input class="toggle" type="checkbox" name="is_expense" id="is_expense" value="False">
-                        <span class="slider"></span>
-                    </label>
-                    <label for="amount">Cantidad<input type="number" step="0.01" min="0" name="amount" id="amount" required></label>
+            <div id="container-form">
+                <form id="form-new-record" method="POST" action="{{ url_for('records.add_record') }}">
+                    <fieldset>
+                        <legend class="set-legend">Fecha</legend>
+                        <label for="from_date"><input type="date" name="from_date" id="from_date" required></label>
+                    </fieldset>
+                    <fieldset id="fieldset-expense">
+                        <legend class="set-legend">Cantidad</legend>
+                        <label for="is_expense"><input class="toggle" type="checkbox" name="is_expense" id="is_expense" value="False">
+                            <span class="slider"></span>
+                        </label>
+                        <label for="amount"><input type="number" step="0.01" min="0" name="amount" id="amount" required></label>
+                    </fieldset>
 
-                </fieldset>
-                <fieldset>
-                    <label for="reporter">Realizado por</label>
-                    <select id="reporter" name="reporter" required>
-                        {% for reporter in allowed_reporters%}
-                        <option value="{{ reporter }}">{{ reporter }}</option>
-                        {% endfor %}
-                    </select>
-                    <label for="tag">Asunto<input type="text" name="tag" id="tag" required></label>
-                    <label for="description">Descripción<input type="text" name="description" id="description"></label>
-                </fieldset>
+                    <fieldset id="fieldset-reporter-info">
+                        <legend class="set-legend">Informador</legend>
+                        <label for="reporter"></label>
+                        <select id="reporter" name="reporter" required>
+                            {% for reporter in allowed_reporters%}
+                            <option value="{{ reporter }}">{{ reporter }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="tag">Asunto<input type="text" name="tag" id="tag" required></label>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="set-legend">Descripción</legend>
+                        <label for="description"><input type="text" name="description" id="description"></label>
+                    </fieldset>
 
-                <button type="submit">Aceptar</button>
-            </form>
+                    <button type="submit" class="new-record">Aceptar</button>
+                </form>
+            </div>
         </section>
     </div>
 
