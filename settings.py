@@ -13,4 +13,6 @@ ALLOWED_REPORTERS = [
     "PAULA"
 ]
 
+LOCALE = 'es_ES'
+
 DEV_MODE = False

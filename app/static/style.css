@@ -114,11 +114,8 @@ html {
 }
 
 .nav-link {
-    transition: font-weight 0.2s ease-in-out;
-}
-
-.nav-link:hover {
-    font-weight: 700;
+    font-weight: 500;
+    color: var(--color-primary);
 }
 
 
@@ -316,6 +313,7 @@ button[type="submit"] {
     font-weight: 1000;
     margin: 0.5rem 2rem 0 0;
     color: var(--color-primary);
+    text-transform: capitalize;
 }
 
 .graphics-saves {
@@ -335,4 +333,23 @@ button[type="submit"] {
     font-size: 1rem;
     font-style: italic;
     color: var(--color-positive);
+}
+
+
+/* EFFECTS */
+.smooth-underline {
+    /* Creates an effect of a moving underline when hovering the element. */
+    display: inline-block;
+    background-image: linear-gradient(var(--color-terciary) 0 0);
+    background-position: 0 100%; /* Starts at bottom left */
+    background-size: 0% 10px;
+    background-repeat: no-repeat;
+    transition:
+        background-size 0.3s,
+        background-position 0s 0.3s /* Change after the size immediately */
+}
+
+.smooth-underline:hover {
+    background-position: 100% 100%; /* Ends up at bottom right */
+    background-size: 100% 10px;
 }

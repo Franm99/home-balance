@@ -1,10 +1,11 @@
-import os
-from pathlib import Path
+import locale
 from flask import Flask
 from flask import logging
 
 from .db import db, RecordsModel
-from settings import BASE_BATH
+from settings import BASE_BATH, LOCALE
+
+locale.setlocale(locale.LC_TIME, LOCALE)
 
 
 def create(dev_mode: bool = False):

@@ -25,6 +25,12 @@
     width: 35%;
 }
 
+.record-info-day {
+    font-size: 1.5rem;
+    font-weight: 1000;
+    color: var(--color-primary);
+}
+
 .record-info-amount {
     font-size: 2rem;
     width: 40%;
@@ -40,7 +46,7 @@
 .tag-box {
     background-color: #EAD94C;
     color: #3B3561;
-    border-radius: 10%;
+    border-radius: 15px;
     padding: 0.3rem;
     text-transform: lowercase;
     box-shadow: 0.1rem 0.1rem var(--color-primary);

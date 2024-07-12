@@ -7,7 +7,7 @@
                 <p class="graphics-month-title">{{month}}</p>
                 <p class="graphics-saves">Ahorro mensual:
                     <span class="month-saves">{{ savings[month][0] }} €</span>
-                    <span class="month-saves-pctg">{{ savings[month][1] }} %</span>
+                    <span class="month-saves-pctg">{{ savings[month][1] + '%' if (savings[month][1] | int) > 0 else '-' }}</span>
                 </p>
             </div>
             <div class="graphics">

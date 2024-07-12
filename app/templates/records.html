@@ -9,7 +9,11 @@
             <span class="record-color {{ 'record-cell-expense' if record.is_expense else 'record-cell-income' }}"></span>
             <div class="record-cell">
                 <div class="record-row-1">
-                    <p class="record-info record-info-date">{{ date_convert(record.date) }}</p>
+                    {% set date_elements = date_convert(record.date)%}
+                    <p class="record-info record-info-date">
+                        {{ date_elements[0] }}
+                        <span class="record-info-day">{{ date_elements[1] }}</span>
+                    </p>
                     <p class="record-info record-info-amount {{ 'text-expense' if record.is_expense else 'text-income' }}">{{ record.amount }} €</p>
                     <p class="record-info record-info-tag"><span class="tag-box">{{ record.tag }}</span></p>
                 </div>
