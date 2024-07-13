@@ -188,20 +188,25 @@ html {
 
 #container-form {
     height: 100vh;
-    position: absolute:
-    top: 0;
     display: flex;
     align-items: center;
 }
 
 #form-new-record {
     width: 50vw;
+    max-width: 600px;
     text-align: center;
     margin: auto auto;
     padding: 25px;
     padding-bottom: 40px;
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.2);
     background-color: white;
+}
+
+@media (max-width: 800px) {
+    #form-new-record {
+        width: 80vw;
+    }
 }
 
 fieldset {
@@ -213,6 +218,7 @@ fieldset {
 
 .set-legend {
     color: var(--color-secondary);
+    font-weight: 700;
 }
 
 #fieldset-expense {
@@ -236,6 +242,7 @@ fieldset:last-of-type {
 label {
     display: block;
     margin: 0.5rem 0;
+    color: var(--color-secondary);
 }
 
 
@@ -244,11 +251,32 @@ input {
     width: 100%;
     min-height: 2em;
     text-align: center;
+    border: solid 2px var(--color-secondary);
+}
+
+::placeholder {
+    color: var(--color-4);
+    font-style: italic;
 }
 
 select {
     height: 2em;
     margin: 0.5rem 0;
+}
+
+#label-tag {
+    display: flex;
+    align-items: center;
+
+}
+
+#tag {
+    margin-top: 0;
+    margin-left: 0.4rem;
+}
+
+#from_date {
+    max-width: 100px;
 }
 
 

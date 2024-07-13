@@ -24,7 +24,17 @@
                         <label for="is_expense"><input class="toggle" type="checkbox" name="is_expense" id="is_expense" value="False">
                             <span class="slider"></span>
                         </label>
-                        <label for="amount"><input type="number" step="0.01" min="0" name="amount" id="amount" lang="es" required></label>
+                        <label for="amount">
+                            <input 
+                                type="number" 
+                                step="0.01" 
+                                min="0" 
+                                name="amount" 
+                                id="amount" 
+                                lang="es" 
+                                placeholder="12,34"
+                                required>
+                        </label>
                     </fieldset>
 
                     <fieldset id="fieldset-reporter-info">
@@ -32,14 +42,15 @@
                         <label for="reporter"></label>
                         <select id="reporter" name="reporter" required>
                             {% for reporter in allowed_reporters%}
-                            <option value="{{ reporter }}">{{ reporter }}</option>
+                                {% set reporter_formatted = reporter[0] + reporter[1:]|lower %}
+                                <option value="{{ reporter_formatted }}">{{ reporter_formatted }}</option>
                             {% endfor %}
                         </select>
-                        <label for="tag">Asunto<input type="text" name="tag" id="tag" required></label>
+                        <label id="label-tag" for="tag">Asunto<input type="text" name="tag" id="tag" placeholder="Casa" required></label>
                     </fieldset>
                     <fieldset>
                         <legend class="set-legend">Descripción</legend>
-                        <label for="description"><input type="text" name="description" id="description"></label>
+                        <label for="description"><input type="text" name="description" placeholder="Descripción corta" id="description"></label>
                     </fieldset>
 
                     <button type="submit" class="new-record">Aceptar</button>
