@@ -50,7 +50,7 @@ def get_expenses_by_tag_and_month():
         month_int = calendar.month_name[month]
         expenses_by_tag_and_month[month_int] = dict()
         for expense in expenses:
-            if expense.tag not in expenses_by_tag_and_month[month_int]:
+            if expense.tag.capitalize() not in expenses_by_tag_and_month[month_int]:
                 expenses_by_tag_and_month[month_int][expense.tag.capitalize()] = expense.amount
             else:
                 expenses_by_tag_and_month[month_int][expense.tag.capitalize()] += expense.amount
@@ -72,7 +72,7 @@ def get_expenses_by_tag_graph():
         _, x_max = plt.xlim()
         plt.xlim(0, x_max + 10)
         for idx, amount in enumerate(expenses.values()):
-            ax.text(amount + 20, idx, str(amount), ha='left', va='center')
+            ax.text(amount + 20, idx, "{:.2f}".format(amount), ha='left', va='center')
         buf = BytesIO()
         plt.savefig(buf, format="png", transparent=True)
         figs[month] = base64.b64encode(buf.getbuffer()).decode("ascii")
